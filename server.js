@@ -1,18 +1,28 @@
-const http = require('http');
- 
-const requestListener = (request, response) => {
-    response.setHeader('Content-Type', 'text/html');
- 
-    response.statusCode = 200;
-    response.end('<h1>Halo HTTP Server!</h1>');
+'use strict';
+
+const Hapi = require('./node_modules/@hapi/hapi');
+
+const init = async () => {
+    const server = Hapi.server({
+        port: 9000,
+        host: 'localhost'
+    });
+
+    server.route({
+        method: 'GET',
+        path: '/',
+        handler: (request, h) => {
+            return 'Hello World!';
+        }
+    });
+
+    await server.start();
+    console.log('Server running on %s', server.info.uri);
 };
- 
- 
-const server = http.createServer(requestListener);
- 
-const port = 9000;
-const host = 'localhost';
- 
-server.listen(port, host, () => {
-    console.log(`Server berjalan pada http://${host}:${port}`);
+
+process.on('unhandledRejection', (err) => {
+    console.log(err);
+    process.exit(1);
 });
+
+init();
