@@ -1,8 +1,8 @@
 {
   "name": "dicoding",
   "version": "1.0.0",
-  "description": "submition",
-  "main": "index.js",
+  "description": "submition bookshelf",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
@@ -10,7 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/hapi": "^21.3.0",
+    "@hapi/joi": "^17.1.1",
     "joi": "^17.9.0",
-    "mysql": "^2.18.1"
+    "knex": "^2.3.0",
+    "mysql": "^2.18.1",
+    "objection": "^3.0.1"
   }
 }

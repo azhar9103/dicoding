@@ -1,26 +1,4 @@
-const mysql = require('mysql');
+const connection = require("./knex")["development"]
+const knex       = require("knex")(connection)
 
-// idwebtekno.com
-const db = exports.db = mysql.createConnection({
-    host: "103.131.51.11",
-    user: "idwebtek_userBook",
-    password: "password2022",
-    database: "idwebtek_bookshelf"
-});
-
-// exports.knex = require('knex')({
-//     client: 'mysql',
-//     connection: {
-//         host: "",
-//         port: 3306,
-//         user: "root",
-//         password: "",
-//         database: ""
-//     }
-// });
-
-
-db.connect(function (err) {
-    if (err) throw err;
-    console.log("Connected!");
-});
+module.exports=knex;
