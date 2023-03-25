@@ -15,9 +15,9 @@ class Book{
     }
     async getData(req,h){
         try {
-            const d = await  BookData.query()
-            console.log(d);
-            return h.response(d)
+            const data = await  BookData.query()
+            console.log(data);
+            return h.response(data)
         } catch (error) {
             return h.respose(err.message) 
         }
